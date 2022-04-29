@@ -8,16 +8,16 @@
           ? (gql) => gql`
               query Search($id: Int!) {
                 todo_by_pk(id: $id) {
-                  text
                   id
+                  name
                 }
               }
             `
           : (gql) => gql`
-              query MyQuery {
+              query {
                 todo {
-                  text
                   id
+                  name
                 }
               }
             `
@@ -36,7 +36,7 @@
           <div v-if="data.todo">
             <div v-for="Todo in data.todo" :key="Todo.id">
               <ul>
-                <li>{{ Todo.text }}</li>
+                <li>{{ Todo.name }}</li>
               </ul>
             </div>
           </div>
@@ -47,7 +47,7 @@
         </div>
 
         <!-- No result -->
-        <div v-else class="no-result apollo">No result :(</div>
+        <div v-else class="no-result apollo">....</div>
       </template>
     </ApolloQuery>
   </div>
